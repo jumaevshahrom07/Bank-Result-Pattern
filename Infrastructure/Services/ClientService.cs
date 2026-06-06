@@ -158,9 +158,9 @@ public class ClientService : IClientService
         }
 
         var noChange =
-        client.FirstName == dto.FirstName &&
-        client.LastName == dto.LastName &&
-        client.PhoneNumber == dto.PhoneNumber;
+        client.FirstName.Trim().ToLower() == dto.FirstName.Trim().ToLower() &&
+        client.LastName.Trim().ToLower() == dto.LastName.Trim().ToLower() &&
+        client.PhoneNumber.Trim() == dto.PhoneNumber.Trim();
 
         if (noChange)
         {
