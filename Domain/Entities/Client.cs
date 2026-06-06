@@ -13,7 +13,7 @@ public class Client
     [Required, MaxLength(50)]
     public string LastName { get; set; } = string.Empty;
 
-    [Required, MaxLength(255)]
+    [Required, MaxLength(255), EmailAddress]
     public string Email { get; set; } = string.Empty;
 
     [Required, MaxLength(20)]

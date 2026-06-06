@@ -8,8 +8,8 @@ namespace WebApi.Controllers;
 [Route("api/clients")]
 public class ClientController : BaseController
 {
-    
-private readonly IClientService _service;
+
+    private readonly IClientService _service;
 
     public ClientController(IClientService service)
     {
@@ -33,6 +33,11 @@ private readonly IClientService _service;
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] ClientCreateDto dto)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var result = await _service.CreateAsync(dto);
         return result.IsSuccess ? Ok(result.Data) : HandleError(result);
     }
